@@ -57,6 +57,7 @@ public:
   void stop(int8_t id);
   void update(void);
   void update(unsigned long now);
+  unsigned long getPendingTime();
 
 protected:
   Event _events[MAX_NUMBER_OF_EVENTS];

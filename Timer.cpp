@@ -36,7 +36,8 @@ Timer::Timer(void)
 int8_t Timer::every(unsigned long period, void (*callback)(), int repeatCount)
 {
 	int8_t i = findFreeEventIndex();
-	if (i == -1) return -1;
+	if (i == -1)
+		return -1;
 
 	_events[i].eventType = EVENT_EVERY;
 	_events[i].period = period;
@@ -45,6 +46,19 @@ int8_t Timer::every(unsigned long period, void (*callback)(), int repeatCount)
 	_events[i].lastEventTime = millis();
 	_events[i].count = 0;
 	return i;
+}
+
+/**
+ * @since v2.2
+ * @author J Suhas Bhat
+ * This method is returns the pending time of the event index given
+ */
+unsigned long Timer::getPendingTime(int8_t eventIndex)
+{
+	if (i == -1)
+		return -1;
+		
+	_events[eventIndex].pendingTime;
 }
 
 int8_t Timer::every(unsigned long period, void (*callback)())
@@ -60,7 +74,8 @@ int8_t Timer::after(unsigned long period, void (*callback)())
 int8_t Timer::oscillate(uint8_t pin, unsigned long period, uint8_t startingValue, int repeatCount)
 {
 	int8_t i = findFreeEventIndex();
-	if (i == NO_TIMER_AVAILABLE) return NO_TIMER_AVAILABLE;
+	if (i == NO_TIMER_AVAILABLE)
+		return NO_TIMER_AVAILABLE;
 
 	_events[i].eventType = EVENT_OSCILLATE;
 	_events[i].pin = pin;
@@ -95,16 +110,17 @@ int8_t Timer::pulseImmediate(uint8_t pin, unsigned long period, uint8_t pulseVal
 {
 	int8_t id(oscillate(pin, period, pulseValue, 1));
 	// now fix the repeat count
-	if (id >= 0 && id < MAX_NUMBER_OF_EVENTS) {
+	if (id >= 0 && id < MAX_NUMBER_OF_EVENTS)
+	{
 		_events[id].repeatCount = 1;
 	}
 	return id;
 }
 
-
 void Timer::stop(int8_t id)
 {
-	if (id >= 0 && id < MAX_NUMBER_OF_EVENTS) {
+	if (id >= 0 && id < MAX_NUMBER_OF_EVENTS)
+	{
 		_events[id].eventType = EVENT_NONE;
 	}
 }
