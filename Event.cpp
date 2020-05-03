@@ -42,11 +42,13 @@ void Event::update(void)
 
 void Event::update(unsigned long now)
 {
-	int elapsedTime = now - lastEventTime;
-	
+	unsigned long elapsedTime = now - lastEventTime;
+
+	pendingTime = period - elapsedTime;
+
 	if (elapsedTime >= period)
 	{
-		pendingTime = period - elapsedTime;
+		pendingTime = 0;
 
 		switch (eventType)
 		{

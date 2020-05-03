@@ -45,20 +45,17 @@ int8_t Timer::every(unsigned long period, void (*callback)(), int repeatCount)
 	_events[i].callback = callback;
 	_events[i].lastEventTime = millis();
 	_events[i].count = 0;
+	_events[i].pendingTime = 0;
 	return i;
 }
 
-/**
- * @since v2.2
- * @author J Suhas Bhat
- * This method is returns the pending time of the event index given
- */
+
 unsigned long Timer::getPendingTime(int8_t eventIndex)
 {
-	if (i == -1)
+	if (eventIndex == -1)
 		return -1;
-		
-	_events[eventIndex].pendingTime;
+
+	return _events[eventIndex].pendingTime;
 }
 
 int8_t Timer::every(unsigned long period, void (*callback)())
@@ -85,6 +82,7 @@ int8_t Timer::oscillate(uint8_t pin, unsigned long period, uint8_t startingValue
 	_events[i].repeatCount = repeatCount * 2; // full cycles not transitions
 	_events[i].lastEventTime = millis();
 	_events[i].count = 0;
+	_events[i].pendingTime = 0;
 	return i;
 }
 
