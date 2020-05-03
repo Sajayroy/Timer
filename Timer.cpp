@@ -53,7 +53,7 @@ int8_t Timer::every(unsigned long period, void (*callback)(), int repeatCount)
 unsigned long Timer::getPendingTime(int8_t eventIndex)
 {
 	if (eventIndex == -1)
-		return -1;
+		return 0L;
 
 	return _events[eventIndex].pendingTime;
 }
