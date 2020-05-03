@@ -36,24 +36,28 @@ Event::Event(void)
 
 void Event::update(void)
 {
-    unsigned long now = millis();
-    update(now);
+	unsigned long now = millis();
+	update(now);
 }
 
 void Event::update(unsigned long now)
 {
-	if (now - lastEventTime >= period)
+	int elapsedTime = now - lastEventTime;
+	
+	if (elapsedTime >= period)
 	{
+		pendingTime = period - elapsedTime;
+
 		switch (eventType)
 		{
-			case EVENT_EVERY:
-				(*callback)();
-				break;
+		case EVENT_EVERY:
+			(*callback)();
+			break;
 
-			case EVENT_OSCILLATE:
-				pinState = ! pinState;
-				digitalWrite(pin, pinState);
-				break;
+		case EVENT_OSCILLATE:
+			pinState = !pinState;
+			digitalWrite(pin, pinState);
+			break;
 		}
 		lastEventTime = now;
 		count++;

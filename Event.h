@@ -37,6 +37,7 @@ public:
   void update(void);
   void update(unsigned long now);
   int8_t eventType;
+  unsigned long pendingTime;
   unsigned long period;
   int repeatCount;
   uint8_t pin;
