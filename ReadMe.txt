@@ -29,4 +29,4 @@ Changed data types of variables and functions:
    can pass context (timer ID, etc.) to the callback functions.
 
 1.4 by J Suhas Bhat
- o Added a method to get the time left for the completion of the event.
+ o Added a method to get the time left for the completion of the event(Timer.getPendingTime()).
