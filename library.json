@@ -1,0 +1,17 @@
+{
+    "name": "Timer",
+    "keywords": "Arduino, Timer, Esp8266",
+    "description": "Simple timer library for arduino and Esp8266",
+    "authors":
+    {
+        "name": "J Suhas Bhat",
+        "email": "suhassow8867@gmail.com"
+     },
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/suhasBhatJ/Timer.git"
+    },
+    "frameworks": "arduino",
+    "platforms": "atmelavr"
+}
