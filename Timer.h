@@ -42,13 +42,13 @@ public:
   int8_t after(unsigned long duration, void (*callback)(void));
   int8_t oscillate(uint8_t pin, unsigned long period, uint8_t startingValue);
   int8_t oscillate(uint8_t pin, unsigned long period, uint8_t startingValue, int repeatCount);
-  
+
   /**
    * This method will generate a pulse of !startingValue, occuring period after the
    * call of this method and lasting for period. The Pin will be left in !startingValue.
    */
   int8_t pulse(uint8_t pin, unsigned long period, uint8_t startingValue);
-  
+
   /**
    * This method will generate a pulse of pulseValue, starting immediately and of
    * length period. The pin will be left in the !pulseValue state
@@ -57,12 +57,17 @@ public:
   void stop(int8_t id);
   void update(void);
   void update(unsigned long now);
-  unsigned long getPendingTime();
+  
+  /**
+ * @since v2.2
+ * @author J Suhas Bhat
+ * This method is returns the pending time of the event index given
+ */
+  unsigned long getPendingTime(int8_t eventIndex);
 
 protected:
   Event _events[MAX_NUMBER_OF_EVENTS];
   int8_t findFreeEventIndex(void);
-
 };
 
 #endif
